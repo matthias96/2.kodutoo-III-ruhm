@@ -1,19 +1,19 @@
-# 2. kodutoo (III rÃ¼hm)
+# 2. kodutoo (III rühm)
 
 ## Kirjeldus
 
-1. VÃµimalda oma lehel kasutajat luua ja kontrollida sisselogimist (kui on Ãµige trÃ¼ki kasutaja id )
-  * Abi saad 4. tunnitÃ¶Ã¶st
-1. **OLULINE! Ã„RA POSTITA GITHUBI GREENY MYSQL PAROOLE.** Selleks toimi jÃ¤rgmiselt:
-  * loo eraldi fail `config.php`. Lisa sinna kasutaja ja parool ning tÃµsta see enda koduse tÃ¶Ã¶ kaustast Ã¼he taseme vÃµrra vÃ¤ljapoole
+1. Võimalda oma lehel kasutajat luua ja kontrollida sisselogimist (kui on õige trüki kasutaja id )
+  * Abi saad 4. tunnitööst
+1. **OLULINE! ÄRA POSTITA GITHUBI GREENY MYSQL PAROOLE.** Selleks toimi järgmiselt:
+  * loo eraldi fail `config.php`. Lisa sinna kasutaja ja parool ning tõsta see enda koduse töö kaustast ühe taseme võrra väljapoole
   ```PHP
   $servername = "localhost";
   $username = "username";
   $password = "password";
   ```
-  * Andmebaasi nimi lisa aga kindlasti enda faili ja `require_once` kÃ¤suga kÃ¼si parool ja kasutajanimi `config.php` failist, siis saan kodust tÃ¶Ã¶d lihtsamini kontrollida
+  * Andmebaasi nimi lisa aga kindlasti enda faili ja `require_once` käsuga küsi parool ja kasutajanimi `config.php` failist, siis saan kodust tööd lihtsamini kontrollida
   ```PHP
-  // Ã¼henduse loomiseks kasuta
+  // ühenduse loomiseks kasuta
   require_once("../config.php");
   $database = "database";
   $mysqli = new mysqli($servername, $username, $password, $database);
