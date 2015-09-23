@@ -51,6 +51,9 @@
 					// kontrollin
 					if(strlen($_POST["password"]) < 8) {
 					$password_error= "Peab olema vähemalt 8 tähemärki pikk"; 
+					}else{
+						
+						$password = test_input($_POST["password"]);
 					}
 					
 				}
