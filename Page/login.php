@@ -30,7 +30,7 @@
 			
 			//vajutas login nuppu
 			if(isset($_POST["login"])){	
-				echo "vajutas login nuppu";
+				
 				
 				
 			
@@ -127,12 +127,12 @@
 						
 						$hash= hash("sha512", $create_password);
 						
-						echo "Võib kasutajat luua! Kasutajanimi on ".$username." email on ".$create_email. "ja parool on".$create_password." ja räsi on".$hash;
+						echo "Võib kasutajat luua! Kasutajanimi on ".$username." email on ".$create_email. "ja parool on ".$create_password." ja räsi on ".$hash;
 						
 						$stmt = $mysqli->prepare("INSERT INTO kasutajanimed (kasutaja,email,password) VALUES (?,?,?)");
 						echo $mysqli->error;
 						echo $stmt->error;
-						$stmt->bind_param("sss", $username, $create_password, $hash);
+						$stmt->bind_param("sss", $username, $create_email, $hash);
 						$stmt->execute();
 						$stmt->close();
 					
