@@ -57,7 +57,7 @@
 			
 			if($email_error== "" && $password_error == "") {
 				
-				echo "kontrollin sisselogimist".$email." ja parool ";
+				
 				
 				$hash= hash("sha512", $password);
 				$stmt = $mysqli->prepare ("SELECT id, email FROM kasutajanimed WHERE email=? AND password=?");
@@ -91,38 +91,55 @@
 					$username_error = "Kirjuta oma kasutajanimi";
 				
 					
-			}else{
-				$username=test_input($_POST["username"]);
-			}
-				if($username_error == ""){
-					echo "salvestan andmebaasi " .$username;
-			}
+				}else{
+					$username=test_input($_POST["username"]);
+				}
+				
+				
+		
+				
+				
 				if (empty($_POST["create_email"]) ) {
 					$create_email_error = "Kirjuta oma email";
+				}else{
+					$create_email = test_input($_POST["create_email"]);
+					
 				}
+				
+				
 				if (empty($_POST["create_password"]) ) {
 					$create_password_error= "Kirjuta parool";
 				} else {
 				
-				if(strlen($_POST["create_password"]) < 8) {
-					$create_password_error= "Peab olema vähemalt 8 tähemärki pikk"; 
+					if(strlen($_POST["create_password"]) < 8) {
+						$create_password_error= "Peab olema vähemalt 8 tähemärki pikk"; 
+					}else{
+						
+						$create_password = test_input($_POST["create_password"]);
 					}
 					
 				}
-			}
-		}
-		if ($create_email_error=="" && $create_password_error=="" && $username_error=="" ){
 				
-				$hash= hash("sha512", $create_password);
 				
-				echo "Võib kasutajat luua! Kasutajanimi on ".$username." email on ".$create_email. "ja parool on".$create_password." ja räsi on".$hash;
-				$stmt = $mysqli->prepare("INSERT INTO kasutajanimed (kasutaja,email,password) VALUES (?,?,?)");
-				echo $mysqli->error;
-				echo $stmt->error;
-				$stmt->bind_param("sss", $username, $create_password, $hash);
-				$stmt->execute();
-				$stmt->close();
 			
+		
+				if ($create_email_error=="" && $create_password_error=="" && $username_error=="" ){
+						
+						$hash= hash("sha512", $create_password);
+						
+						echo "Võib kasutajat luua! Kasutajanimi on ".$username." email on ".$create_email. "ja parool on".$create_password." ja räsi on".$hash;
+						
+						$stmt = $mysqli->prepare("INSERT INTO kasutajanimed (kasutaja,email,password) VALUES (?,?,?)");
+						echo $mysqli->error;
+						echo $stmt->error;
+						$stmt->bind_param("sss", $username, $create_password, $hash);
+						$stmt->execute();
+						$stmt->close();
+					
+					
+				}
+				
+			}
 			
 		}
 		
