@@ -63,7 +63,7 @@
 				
 				
 				$hash= hash("sha512", $password);
-				$stmt = $mysqli->prepare ("SELECT id, email FROM kasutajanimed WHERE email=? AND password=?");
+				$stmt = $mysqli->prepare ("SELECT id, email FROM usernames WHERE email=? AND password=?");
 				$stmt->bind_param("ss", $email, $hash);
 				
 				$stmt->bind_result($id_from_db, $email_from_db);
@@ -132,7 +132,7 @@
 						
 						echo "Võib kasutajat luua! Kasutajanimi on ".$username." email on ".$create_email. "ja parool on ".$create_password." ja räsi on ".$hash;
 						
-						$stmt = $mysqli->prepare("INSERT INTO kasutajanimed (kasutaja,email,password) VALUES (?,?,?)");
+						$stmt = $mysqli->prepare("INSERT INTO usernames (user,email,password) VALUES (?,?,?)");
 						echo $mysqli->error;
 						echo $stmt->error;
 						$stmt->bind_param("sss", $username, $create_email, $hash);
